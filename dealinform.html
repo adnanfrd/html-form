@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delinea Partner Program</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .offer-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 90% !important; /* Set card width to 90% of page */
+            margin-left: auto !important;
+            margin-right: auto !important;
+        }
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .btn-gradient {
+            background: linear-gradient(to right, #22c55e, #3b82f6);
+            transition: all 0.3s ease;
+        }
+        .btn-gradient:hover {
+            background: linear-gradient(to right, #16a34a, #2563eb);
+            transform: translateY(-2px);
+        }
+        @media only screen and (max-width: 600px) {
+            .main-container {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 5px !important;
+            }
+            .header {
+                padding: 20px 10px !important;
+            }
+            .header h1 {
+                font-size: 22px !important;
+            }
+            .header p {
+                font-size: 14px !important;
+            }
+            .countdown {
+                padding: 10px !important;
+                font-size: 13px !important;
+            }
+            .content {
+                padding: 20px 10px !important;
+            }
+            .hero-section {
+                padding: 20px 10px !important;
+            }
+            .hero-section h2 {
+                font-size: 22px !important;
+            }
+            .hero-section p {
+                font-size: 14px !important;
+            }
+            .stats-grid {
+                display: block !important;
+            }
+            .stats-grid tr {
+                display: flex !important;
+                flex-wrap: wrap !important;
+                justify-content: center !important;
+            }
+            .stats-grid td {
+                width: 100% !important;
+                padding: 5px !important;
+            }
+            .stats-grid .stat-box {
+                width: 100% !important;
+                padding: 15px !important;
+            }
+            .stats-grid .stat-box div:first-child {
+                font-size: 22px !important;
+            }
+            .stats-grid .stat-box div:last-child {
+                font-size: 13px !important;
+            }
+            .offer-card {
+                padding: 15px !important;
+            }
+            .offer-card h3 {
+                font-size: 18px !important;
+            }
+            .offer-card p {
+                font-size: 13px !important;
+            }
+            .offer-card .price {
+                font-size: 20px !important;
+            }
+            .offer-card .price-strike {
+                font-size: 13px !important;
+            }
+            .offer-card .save-badge {
+                font-size: 10px !important;
+                padding: 3px 8px !important;
+            }
+            .offer-card .urgency {
+                font-size: 12px !important;
+                padding: 8px 12px !important;
+            }
+            .offer-card a {
+                padding: 10px 20px !important;
+                font-size: 13px !important;
+            }
+            .social-proof {
+                padding: 15px !important;
+            }
+            .social-proof p {
+                font-size: 14px !important;
+            }
+            .social-proof div {
+                font-size: 13px !important;
+            }
+            .trust-badges td {
+                display: block !important;
+                width: 100% !important;
+                padding: 5px 0 !important;
+            }
+            .trust-badges div {
+                font-size: 11px !important;
+                padding: 8px 15px !important;
+            }
+            .final-cta {
+                padding: 20px 10px !important;
+            }
+            .final-cta h3 {
+                font-size: 18px !important;
+            }
+            .final-cta p {
+                font-size: 14px !important;
+            }
+            .final-cta a {
+                padding: 12px 25px !important;
+                font-size: 14px !important;
+            }
+            .final-cta p:last-child {
+                font-size: 12px !important;
+            }
+            .footer {
+                padding: 20px 10px !important;
+            }
+            .footer p,
+            .footer a {
+                font-size: 11px !important;
+            }
+            .footer div a {
+                margin: 0 8px !important;
+            }
+        }
+        @media only screen and (max-width: 400px) {
+            .offer-card-header table {
+                display: block !important;
+            }
+            .offer-card-header tr {
+                display: block !important;
+            }
+            .offer-card-header td {
+                display: block !important;
+                width: 100% !important;
+                text-align: left !important;
+                padding: 5px 0 !important;
+            }
+            .offer-card-header td:last-child {
+                text-align: center !important;
+            }
+            .offer-card-header .badge {
+                display: inline-block !important;
+                margin: 0 auto !important;
+                font-size: 10px !important;
+                padding: 6px 12px !important;
+            }
+            .offer-card-header td:first-child {
+                text-align: center !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen text-gray-100">
+    <div class="main-container w-full mx-auto p-6">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="content" style="padding: 10px 30px">
+                    <!-- 1st table -->
+                    <table
+                        role="presentation"
+                        class="offer-card"
+                        cellspacing="0"
+                        cellpadding="0"
+                        border="0"
+                        width="100%"
+                        style="margin: 24px 0;"
+                        class="bg-white rounded-2xl rounded-xl border-2 border-gray-400 shadow-lg"
+                    >
+                        <tr>
+                            <td class="p-8">
+                                <h3 class="text-2xl font-bold text-gray-800 mb-4">
+                                    Delinea Partner Program: Unlock Growth and Security
+                                </h3>
+                                <p class="text-gray-600 text-base leading-relaxed">
+                                    <strong class="text-green-500">Delinea Partner Program Overview:</strong><br />
+                                    • The provided text outlines the Delinea Partner Program, emphasizing its role in enabling partners to grow their businesses.<br />
+                                    • It addresses the critical need for Privileged Access Management (PAM) and identity security.<br /><br />
+
+                                    <strong class="text-green-500">Program Expansion Details:</strong><br />
+                                    • Below, I’ll expand on each section of the text.<br />
+                                    • Providing deeper insights into the program’s value proposition, benefits, partnership models, and steps to join.<br />
+                                    • Integrating relevant details from the search results.<br />
+                                    • Critically analyzing the opportunity for potential partners.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- 2nd table -->
+                    <table
+                        role="presentation"
+                        class="offer-card"
+                        cellspacing="0"
+                        cellpadding="0"
+                        border="0"
+                        width="100%"
+                        style="margin: 24px 0;"
+                        class="bg-white rounded-2xl border-2 border-gray-200 shadow-lg"
+                    >
+                        <tr>
+                            <td class="p-8">
+                                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                                    The Importance of PAM and Delinea’s Role
+                                </h3>
+                                <p class="text-gray-600 text-base leading-relaxed">
+                                    <strong class="text-green-500">Cyber Threat Landscape & PAM Importance:</strong><br />
+                                    • In today’s digital landscape, cyber threats like ransomware, data breaches, and insider attacks are increasingly sophisticated, targeting privileged accounts that provide high-level access to critical systems.<br />
+                                    • The text highlights that PAM is “no longer optional—it’s essential” due to expanding attack surfaces across cloud, on-premise, and hybrid environments.<br />
+                                    • This aligns with industry trends, as 80% of breaches involve compromised privileged credentials, according to Forrester Research.<br /><br />
+
+                                    <strong class="text-green-500">Delinea’s Role & Partner Program Overview:</strong><br />
+                                    • Delinea positions itself as a global leader in PAM and identity security, offering solutions that secure privileged access for human and machine identities across diverse IT environments.<br />
+                                    • The Delinea Platform provides just-in-time access, adaptive controls, and AI-driven threat detection, reducing risk while maintaining operational efficiency.<br />
+                                    • The Partner Program is designed to empower businesses—resellers, integrators, distributors, and technology partners—to leverage Delinea’s expertise and solutions to drive growth and deliver robust security to their customers.<br /><br />
+
+                                    <strong class="text-green-500">PAM Necessity & Delinea Solutions:</strong><br />
+                                    • The emphasis on PAM’s necessity reflects the growing complexity of IT environments, where cloud adoption, remote work, and third-party integrations increase vulnerabilities.<br />
+                                    • Delinea’s solutions, such as Secret Server, Privilege Manager, and Account Lifecycle Manager, address these challenges by automating credential management, enforcing least privilege, and providing real-time threat detection.<br />
+                                    • The Partner Program is not just about selling software but about enabling partners to become trusted advisors in a market where identity security is a top priority.<br />
+                                    • By joining, partners can align with a vendor recognized as a Leader in the 2024 Gartner Magic Quadrant for PAM for six consecutive years, enhancing their credibility.<br /><br />
+
+                                    <strong class="text-green-500">Why Partner with Delinea?</strong><br /><br />
+                                    The text lists three compelling reasons to join the Delinea Partner Program:<br />
+                                    • <strong class="text-blue-500">Booming Market Opportunity:</strong> The global PAM market was valued at $2.47 billion in 2020 and is projected to reach $19.73 billion by 2030, per Allied Market Research. This growth is driven by increasing cybersecurity threats and regulatory requirements for access control.<br /><br />
+                                    • <strong class="text-blue-500">Industry Recognition:</strong> Delinea was the only vendor named a Leader in all five major analyst reports for PAM in 2023, underscoring its innovation and market dominance.<br /><br />
+                                    • <strong class="text-blue-500">Proven Track Record:</strong> Trusted by thousands of organizations, including over half of the Fortune 100, Delinea secures critical assets for clients ranging from small businesses to global financial institutions and government agencies.<br /><br />
+
+                                    The PAM market’s projected growth reflects the rising demand for solutions that protect privileged accounts, a primary target for cyberattacks. For partners, this presents a lucrative opportunity to tap into a high-demand sector with significant revenue potential. Delinea’s leadership in analyst reports, such as the 2024 Gartner Magic Quadrant, validates its technical excellence and market trust, making it an attractive partner for businesses looking to differentiate themselves. The diverse customer base highlights Delinea’s scalability, enabling partners to serve clients of all sizes and industries, from finance to healthcare. However, potential partners should critically assess whether their customer base aligns with this market and if they have the technical expertise to implement complex PAM solutions effectively.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- 3rd table -->
+                    <table
+                        role="presentation"
+                        class="offer-card"
+                        cellspacing="0"
+                        cellpadding="0"
+                        border="0"
+                        width="100%"
+                        style="margin: 24px 0;"
+                        class="bg-white rounded-2xl border-2 border-gray-200 shadow-lg"
+                    >
+                        <tr>
+                            <td class="p-8">
+                                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                                    Program Benefits
+                                </h3>
+                                <p class="text-gray-600 text-base leading-relaxed">
+                                    <strong class="text-green-500">Delinea Partner Program Benefits:</strong><br />
+                                    The Delinea Partner Program offers a range of benefits tailored to support partners’ business growth and operational success:<br /><br />
+
+                                    • <strong class="text-blue-500">Financial Incentives & Deal Protection:</strong><br />
+                                    ○ <strong class="text-blue-500">Preferential Discounts and Margin Guarantees:</strong> Partners receive competitive pricing and margin advantages through deal registration, ensuring profitability.<br />
+                                    ○ <strong class="text-blue-500">Renewal Incumbency:</strong> Protects existing partners by prioritizing them for contract renewals, providing predictable revenue streams.<br /><br />
+
+                                    • <strong class="text-blue-500">Enablement & Training:</strong><br />
+                                    ○ Access to comprehensive sales, pre-sales, and technical training programs, including certifications to enhance partner expertise.<br />
+                                    ○ Resources like the Delinea Partner Portal provide tools for deal management, training, and enablement.<br /><br />
+
+                                    • <strong class="text-blue-500">Marketing & Co-Branding:</strong><br />
+                                    ○ <strong class="text-blue-500">Market Development Funds (MDF):</strong> Support joint marketing campaigns and growth initiatives.<br />
+                                    ○ Co-branded collateral and lead-generation programs help partners promote Delinea solutions effectively.<br /><br />
+
+                                    • <strong class="text-blue-500">Partner Portal Access:</strong><br />
+                                    ○ A centralized hub for managing deal registrations, tracking progress, and accessing resources like training materials and sales tools.<br />
+                                    ○ The portal, launched in 2024, enhances partner collaboration and efficiency.<br /><br />
+
+                                    <strong class="text-green-500">Summary and Analysis:</strong><br />
+                                    These benefits are structured to support partners at every stage of the sales cycle, from lead generation to deal closure and renewal. The financial incentives, particularly deal registration and renewal incumbency, ensure partners are rewarded for their efforts and protected from competitive undercutting. The training programs are robust, covering sales, pre-sales, and professional services, which is critical for partners new to PAM or those scaling their practice. The Partner Portal’s centralized resources streamline operations, but partners should evaluate the learning curve of adopting the portal and ensure their teams are prepared to leverage it fully. The MDF and co-branding opportunities are particularly valuable for smaller partners or those entering new markets, as they reduce marketing costs and enhance brand visibility. However, partners must actively engage in these programs to maximize value, as passive participation may yield limited results.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- 4th table -->
+                    <table
+                        role="presentation"
+                        class="offer-card"
+                        cellspacing="0"
+                        cellpadding="0"
+                        border="0"
+                        width="100%"
+                        style="margin: 24px 0;"
+                        class="bg-white rounded-2xl border-2 border-gray-200 shadow-lg"
+                    >
+                        <tr>
+                            <td class="p-8">
+                                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                                    Partnership Models
+                                </h3>
+                                <p class="text-gray-600 text-base leading-relaxed">
+                                    <strong class="text-green-500">Flexible Partnership Tiers:</strong><br />
+                                    Delinea’s Partner Program is flexible, offering four tiers (Entry, Silver, Gold, Platinum) with varying requirements and benefits to suit different partner types:<br /><br />
+
+                                    • <strong class="text-blue-500">Reseller Partners:</strong><br />
+                                    ○ Focus on selling Delinea solutions with volume pricing and dedicated account support, ideal for businesses with established sales channels.<br /><br />
+
+                                    • <strong class="text-blue-500">Technology Partners:</strong><br />
+                                    ○ Integrate their solutions with Delinea’s platform, creating seamless security offerings.<br />
+                                    ○ For example, Delinea’s integrations with Microsoft (Azure AD, SQL Server) and IBM Security enhance interoperability.<br /><br />
+
+                                    • <strong class="text-blue-500">Trusted Advisory Partners:</strong><br />
+                                    ○ Embed Delinea solutions into broader digital transformation or cybersecurity projects, acting as strategic consultants.<br /><br />
+
+                                    • <strong class="text-blue-500">Distribution Partners:</strong><br />
+                                    ○ Expand Delinea’s reach through regional reseller networks, supported by distributors like emt Distribution or Crayon.<br /><br />
+
+                                    <strong class="text-green-500">Analysis of Partnership Models:</strong><br />
+                                    The tiered structure and diverse partnership models cater to a wide range of businesses, from small resellers to global system integrators (GSIs) and managed service providers (MSPs/MSSPs). This flexibility allows partners to choose a model that aligns with their business strategy, whether they focus on direct sales, technical integrations, or strategic consulting. Technology partners benefit from Delinea’s 100+ integrations in its Technology Ecosystem, enabling them to create tailored solutions for clients. However, potential partners should consider the investment required for higher tiers (e.g., Platinum), which may involve significant sales volume or technical expertise. Distribution partners, supported by firms like emt Distribution, can leverage regional expertise and established networks, particularly in markets like ANZ or APAC. Partners should assess their market position and resources to select the most suitable model.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- 5th table -->
+                    <table
+                        role="presentation"
+                        class="offer-card"
+                        cellspacing="0"
+                        cellpadding="0"
+                        border="0"
+                        width="100%"
+                        style="margin: 24px 0;"
+                        class="bg-white rounded-2xl border-2 border-gray-200 shadow-lg"
+                    >
+                        <tr>
+                            <td class="p-8">
+                                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                                    Getting Started
+                                </h3>
+                                <p class="text-gray-600 text-base leading-relaxed">
+                                    <strong class="text-green-500">Joining the Delinea Partner Program:</strong><br />
+                                    The text outlines a clear process for joining the Delinea Partner Program:<br /><br />
+
+                                    • <strong class="text-blue-500">Explore Options:</strong> Visit delinea.com/partners to review partnership details.<br />
+                                    • <strong class="text-blue-500">Submit Business Overview:</strong> Provide a brief description of your business to initiate contact with Delinea’s partner team.<br />
+                                    • <strong class="text-blue-500">Register for the Partner Portal:</strong> Gain access to resources and deal registration tools.<br />
+                                    • <strong class="text-blue-500">Complete Onboarding:</strong> Participate in initial training and certifications, then register your first deal to start generating revenue.<br /><br />
+
+                                    <strong class="text-green-500">Additional Insights:</strong><br />
+                                    The onboarding process is designed to be streamlined, with the Partner Portal serving as a central hub for resources and deal management. The emphasis on training ensures partners are equipped to sell and implement Delinea’s solutions effectively, which is critical given the technical complexity of PAM. However, new partners should be prepared for an initial investment of time and resources in training and certifications, particularly if they lack prior PAM expertise. The deal registration process, accessible via the Partner Portal, protects partners’ investments by offering exclusive benefits and discounts. Potential partners should contact Delinea promptly to clarify tier requirements and ensure alignment with their business goals.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- join-us-today -->
+                    <table
+                        role="presentation"
+                        class="offer-card"
+                        cellspacing="0"
+                        cellpadding="0"
+                        border="0"
+                        width="100%"
+                        style="margin: 24px 0;"
+                        class="bg-white rounded-2xl border-2 border-gray-200 shadow-lg"
+                    >
+                        <tr>
+                            <td class="p-8">
+                                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                                    Join Us Today
+                                </h3>
+                                <p class="text-gray-600 text-base leading-relaxed">
+                                    <strong class="text-green-500">Call to Action & Final Value Summary:</strong><br />
+                                    The text concludes with a call to action, urging partners to join Delinea’s global community to deliver “confidence, control, and security” while driving revenue growth. By partnering with Delinea, businesses can position themselves as leaders in identity security, leveraging a trusted brand and a comprehensive ecosystem to meet customer needs.<br /><br />
+
+                                    <strong class="text-green-500">Program Highlights & Market Opportunity:</strong><br />
+                                    • Joining the Delinea Partner Program positions partners at the forefront of a rapidly growing cybersecurity sector, with access to a market projected to grow nearly eightfold by 2030.<br />
+                                    • The program’s global reach, supported by regional leadership (e.g., Kara Trovato in the Americas and Miles Rippon internationally), ensures partners receive localized support.<br />
+                                    • The 5-star rating in the 2025 CRN Partner Program Guide further validates the program’s value, highlighting enhancements like the new Partner Portal and cloud marketplace integrations.<br /><br />
+
+                                    <strong class="text-green-500">Important Consideration:</strong><br />
+                                    However, partners should critically evaluate their capacity to meet Delinea’s expectations, such as deal registration and active participation in enablement programs, to fully capitalize on the partnership.
+                                </p>
+                                <a
+                                    href="https://delinea.com/partners"
+                                    class="btn-gradient inline-block px-6 py-3 text-white font-semibold rounded-lg"
+                                >
+                                    JOIN THE PROGRAM →
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- Critical considerations -->
+                    <table
+                        role="presentation"
+                        class="offer-card"
+                        cellspacing="0"
+                        cellpadding="0"
+                        border="0"
+                        width="100%"
+                        style="margin: 24px 0;"
+                        class="bg-white rounded-2xl border-2 border-gray-200 shadow-lg"
+                    >
+                        <tr>
+                            <td class="p-8">
+                                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                                    Critical Considerations
+                                </h3>
+                                <p class="text-gray-600 text-base leading-relaxed">
+                                    <strong class="text-green-500">Key Considerations for Potential Partners:</strong><br />
+                                    While the Delinea Partner Program offers significant opportunities, potential partners should consider:<br /><br />
+
+                                    • <strong class="text-blue-500">Technical Expertise:</strong> Implementing PAM solutions requires skilled personnel, particularly for integrations and managed services.<br /><br />
+
+                                    • <strong class="text-blue-500">Market Alignment:</strong> Partners must ensure their customer base has a need for PAM, as the solutions are most relevant for organizations with complex IT environments or strict compliance requirements.<br /><br />
+
+                                    • <strong class="text-blue-500">Competitive Landscape:</strong> Delinea competes with other PAM providers like CyberArk and BeyondTrust, so partners should assess Delinea’s differentiation (e.g., cloud-native platform, AI-driven features) when positioning solutions.<br /><br />
+
+                                    • <strong class="text-blue-500">Investment:</strong> Higher tiers and active participation require time, training, and marketing efforts, which may challenge smaller organizations.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <!-- Conclusion -->
+                    <table
+                        role="presentation"
+                        class="offer-card"
+                        cellspacing="0"
+                        cellpadding="0"
+                        border="0"
+                        width="100%"
+                        style="margin: 24px 0;"
+                        class="bg-white rounded-2xl border-2 border-gray-200 shadow-lg"
+                    >
+                        <tr>
+                            <td class="p-8">
+                                <h3 class="text-xl font-bold text-gray-800 mb-4">
+                                    Conclusion
+                                </h3>
+                                <p class="text-gray-600 text-base leading-relaxed">
+                                    <strong class="text-green-500">Strategic Opportunity Summary:</strong><br />
+                                    The Delinea Partner Program is a strategic opportunity for businesses to capitalize on the growing demand for PAM and identity security. With a robust ecosystem, comprehensive benefits, and flexible partnership models, Delinea empowers partners to grow their revenue, enhance their security offerings, and build long-term customer trust.<br /><br />
+
+                                    <strong class="text-green-500">Quick Start Steps to Integrate Delinea Solutions:</strong><br />
+                                    • Explore options<br />
+                                    • Submit a business overview<br />
+                                    • Register for the Partner Portal<br />
+                                    • Complete onboarding<br /><br />
+
+                                    By following the outlined steps—exploring options, submitting a business overview, registering for the Partner Portal, and completing onboarding—partners can quickly integrate Delinea’s solutions into their portfolio and contribute to a safer digital world.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
