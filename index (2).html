@@ -1,0 +1,165 @@
+<script type="text/javascript">
+  var gk_isXlsx = false;
+  var gk_xlsxFileLookup = {};
+  var gk_fileData = {};
+  function filledCell(cell) {
+    return cell !== "" && cell != null;
+  }
+  function loadFileData(filename) {
+    if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+      try {
+        var workbook = XLSX.read(gk_fileData[filename], { type: "base64" });
+        var firstSheetName = workbook.SheetNames[0];
+        var worksheet = workbook.Sheets[firstSheetName];
+
+        // Convert sheet to JSON to filter blank rows
+        var jsonData = XLSX.utils.sheet_to_json(worksheet, {
+          header: 1,
+          blankrows: false,
+          defval: "",
+        });
+        // Filter out blank rows (rows where all cells are empty, null, or undefined)
+        var filteredData = jsonData.filter((row) => row.some(filledCell));
+
+        // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+        var headerRowIndex = filteredData.findIndex(
+          (row, index) =>
+            row.filter(filledCell).length >=
+            filteredData[index + 1]?.filter(filledCell).length
+        );
+        // Fallback
+        if (headerRowIndex === -1 || headerRowIndex > 25) {
+          headerRowIndex = 0;
+        }
+
+        // Convert filtered JSON back to CSV
+        var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+        csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+        return csv;
+      } catch (e) {
+        console.error(e);
+        return "";
+      }
+    }
+    return gk_fileData[filename] || "";
+  }
+</script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI & Security Mastery Bootcamp</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-gray-100 font-sans">
+    <!-- Header Section -->
+    <header class="bg-blue-800 text-white text-center py-16">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        AI & Security Mastery Bootcamp + Certification
+      </h1>
+      <p class="text-lg md:text-xl max-w-2xl mx-auto">
+        Empower Your Staffing Agency to Dominate the Recruiting Space with
+        Cutting-Edge AI and Security Expertise
+      </p>
+    </header>
+
+    <!-- Main Content Section -->
+    <main class="max-w-6xl mx-auto py-12 px-4">
+      <!-- Why This Bootcamp Section -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-semibold text-center mb-6">
+          Why Choose Our Bootcamp?
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <h3 class="text-xl font-bold mb-2">
+              Tailored for Staffing Agencies
+            </h3>
+            <p>
+              Designed specifically to address the unique challenges and
+              opportunities in the recruiting industry.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <h3 class="text-xl font-bold mb-2">AI-Powered Recruiting</h3>
+            <p>
+              Leverage AI tools to streamline candidate sourcing, screening, and
+              placement processes.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <h3 class="text-xl font-bold mb-2">Security Expertise</h3>
+            <p>
+              Master cybersecurity best practices to protect sensitive data and
+              build client trust.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- What You'll Learn Section -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-semibold text-center mb-6">
+          What You'll Learn
+        </h2>
+        <ul class="list-disc list-inside max-w-2xl mx-auto text-lg">
+          <li>Advanced AI techniques for talent acquisition and management</li>
+          <li>
+            Cybersecurity protocols to safeguard candidate and client data
+          </li>
+          <li>Strategies to optimize recruiting workflows with automation</li>
+          <li>
+            Compliance with data protection regulations (GDPR, CCPA, etc.)
+          </li>
+          <li>
+            Certification to showcase your expertise to clients and candidates
+          </li>
+        </ul>
+      </section>
+
+      <!-- Pricing Section -->
+      <section class="mb-12">
+        <h2 class="text-3xl font-semibold text-center mb-6">Pricing</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <h3 class="text-xl font-bold mb-2">Agency Plan (Up to 5 People)</h3>
+            <p class="text-2xl font-semibold mb-4">$297</p>
+            <p>
+              Perfect for staffing agencies looking to train their team and
+              dominate the recruiting space.
+            </p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-md text-center">
+            <h3 class="text-xl font-bold mb-2">Individual Plan</h3>
+            <p class="text-2xl font-semibold mb-4">$147</p>
+            <p>
+              Ideal for solo recruiters or professionals aiming to master AI and
+              security skills.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action Section -->
+      <section class="text-center">
+        <h2 class="text-3xl font-semibold mb-6">
+          Ready to Dominate the Recruiting Space?
+        </h2>
+        <p class="text-lg mb-6 max-w-xl mx-auto">
+          Join our AI & Security Mastery Bootcamp and gain the skills to lead
+          the industry with confidence.
+        </p>
+        <a
+          href="#learn-more"
+          class="inline-block bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition"
+          >Learn More Now!</a
+        >
+      </section>
+    </main>
+
+  </body>
+</html>

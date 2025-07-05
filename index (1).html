@@ -1,0 +1,110 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Resume Upload Engine - Transform Your Career</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 font-sans">
+  <!-- Hero Section -->
+  <section class="bg-blue-600 text-white py-20 text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Transform Your Resume with AI Power</h1>
+      <p class="text-lg md:text-xl mb-6">Unlock your career potential with our AI Resume Upload Engine. Optimize for ATS, create a brag sheet, and land your dream job!</p>
+      <a href="#pricing" class="bg-yellow-400 text-blue-900 font-semibold py-3 px-6 rounded-lg hover:bg-yellow-500 transition">Get Started for $47/mo</a>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="py-16 bg-white">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-12">Why Choose AI Resume Upload Engine?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <h3 class="text-xl font-semibold mb-2">ATS-Optimized Resumes</h3>
+          <p class="text-gray-600">Our AI transforms your resume into a format that Applicant Tracking Systems love, boosting your chances of getting noticed.</p>
+        </div>
+        <div class="text-center">
+          <h3 class="text-xl font-semibold mb-2">Brag Sheet for Interviews</h3>
+          <p class="text-gray-600">Get a tailored brag sheet based on your resume, highlighting your achievements to shine in interviews.</p>
+        </div>
+        <div class="text-center">
+          <h3 class="text-xl font-semibold mb-2">Original & Optimized</h3>
+          <p class="text-gray-600">Keep your unique voice while our AI enhances your resume for maximum impact and clarity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="py-16 bg-gray-100">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-bold mb-6">Simple, Affordable Pricing</h2>
+      <div class="bg-white shadow-lg rounded-lg p-8 max-w-md mx-auto">
+        <h3 class="text-2xl font-semibold mb-4">AI Resume Upload Engine</h3>
+        <p class="text-4xl font-bold mb-4">$47<span class="text-lg">/month</span></p>
+        <p class="text-green-600 font-semibold mb-4">Special Offer: $25 in AI Credits for the First 3 Months!</p>
+        <ul class="text-left text-gray-600 mb-6">
+          <li class="mb-2">✔ ATS-optimized resume transformation</li>
+          <li class="mb-2">✔ Custom brag sheet for interviews</li>
+          <li class="mb-2">✔ Original and optimized resume formats</li>
+          <li class="mb-2">✔ Unlimited uploads and edits</li>
+        </ul>
+        <a href="#signup" class="bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 transition">Start Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action Section -->
+  <section id="signup" class="bg-blue-600 text-white py-16 text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-4">Ready to Land Your Dream Job?</h2>
+      <p class="text-lg mb-6">Join thousands of professionals who’ve transformed their careers with our AI Resume Upload Engine.</p>
+      <form class="max-w-md mx-auto">
+        <input type="email" placeholder="Enter your email" class="w-full py-3 px-4 mb-4 rounded-lg text-gray-900" required>
+        <button type="submit" class="bg-yellow-400 text-blue-900 font-semibold py-3 px-6 rounded-lg hover:bg-yellow-500 transition">Sign Up Now</button>
+      </form>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlock Growth with Our Partner Program</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background-color: #0055a5;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content {
+            padding: 20px;
+            line-height: 1.6;
+            color: #333333;
+        }
+        .content h2 {
+            color: #0055a5;
+            font-size: 20px;
+            margin-top: 0;
+        }
+        .content p {
+            margin: 10px 0;
+        }
+        .content ul {
+            padding-left: 20px;
+        }
+        .content ul li {
+            margin-bottom: 10px;
+        }
+        .cta {
+            text-align: center;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .cta a {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #0055a5;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .cta a:hover {
+            background-color: #003f7d;
+        }
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #666666;
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Unlock Growth and Security with Our Partner Program</h1>
+        </div>
+        <div class="content">
+            <h2>Join a Leader in Privileged Access Management</h2>
+            <p>In today’s digital-first world, securing privileged access is critical as cyber threats grow more sophisticated. Our Partner Program empowers you to deliver cutting-edge identity security solutions while driving revenue and staying ahead in the booming cybersecurity market, projected to grow from $2.47 billion in 2020 to $19.73 billion by 2030.</p>
+            
+            <h2>Why Partner with Us?</h2>
+            <p>Our program is designed for mutual success, offering tailored support for resellers, distributors, system integrators, and technology partners. With a proven track record as a leader in all major 2023 analyst reports, we provide enterprise-ready solutions and a global community of cybersecurity experts.</p>
+            
+            <h2>Program Benefits</h2>
+            <ul>
+                <li><strong>Financial Incentives:</strong> Protect your leads with deal registration, enjoy renewal incumbency, and earn performance-based rewards.</li>
+                <li><strong>Enablement & Training:</strong> Access sales and technical training, certifications, and accreditations to build credibility.</li>
+                <li><strong>Marketing Support:</strong> Utilize Market Development Funds (MDF) and co-branded assets to drive demand.</li>
+                <li><strong>Partner Portal:</strong> Manage deals, track progress, and access resources through a centralized hub.</li>
+            </ul>
+            
+            <h2>Flexible Partnership Models</h2>
+            <p>Choose the path that fits your business:</p>
+            <ul>
+                <li><strong>Reseller Partners:</strong> Sell directly with deal registration and dedicated account management.</li>
+                <li><strong>Technology Partners:</strong> Integrate with our solutions for seamless offerings and co-marketing exposure.</li>
+                <li><strong>Trusted Advisory Partners:</strong> Embed our solutions in transformation projects with robust training.</li>
+                <li><strong>Distribution Partners:</strong> Scale regionally by onboarding new partners and facilitating enablement.</li>
+            </ul>
+            
+            <h2>Get Started Today</h2>
+            <p>Our tiered program—Entry, Silver, Gold, and Platinum—offers increasing benefits based on your engagement. Onboarding is simple: explore partnership options, register for the Partner Portal, submit an inquiry, and access training and marketing resources to kickstart your success.</p>
+        </div>
+        <div class="cta">
+            <a href="https://partners.example.com">Learn More About the Program Click Here</a>
+        </div>
+    </div>
+</body>
+</html>
