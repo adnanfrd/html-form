@@ -1,0 +1,118 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IncGPT: Skyrocket Your Recruiting with AI</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; color: #333; }
+    h1, h2, h3 { color: #d32f2f; }
+    .cta-button { display: inline-block; padding: 10px 20px; background-color: #d32f2f; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; }
+    .cta-button:hover { background-color: #b71c1c; }
+    .highlight { background-color: #ffebee; padding: 15px; border-radius: 5px; margin: 10px 0; }
+    .warning { color: #d32f2f; font-weight: bold; }
+    .footer { margin-top: 40px; font-size: 0.9em; color: #666; }
+  </style>
+</head>
+<body>
+  <h1>🚨 DOMINATE RECRUITING WITH AI NOW!</h1>
+  <p class="highlight">Your competitors are crushing it with AI. Don’t get left behind—<strong>TRIPLE your applicants TODAY!</strong></p>
+  <p><a href="https://linkedin.com/in/bertblevins" class="cta-button">Connect with Bert Blevins on LinkedIn</a></p>
+
+  <h2>⏰ 48 HOURS LEFT! GRAB THIS DEAL BEFORE IT’S GONE!</h2>
+  <p class="warning">Prices SLASHED for a limited time—ACT FAST or pay more later!</p>
+
+  <h2>🎯 Turn Applicants into SUPERSTARS with AI Resume Engine</h2>
+  <p>Our cutting-edge AI Resume Upload Engine transforms resumes into hiring magnets. Optimize, enhance, and create brag sheets that make your candidates UNSTOPPABLE.</p>
+  <ul>
+    <li><strong>Stand out:</strong> AI-driven resume optimization.</li>
+    <li><strong>Win jobs:</strong> Brag sheets that scream success.</li>
+    <li><strong>Limited offer:</strong> Only <strong>23 licenses left</strong> at $47/month (70% OFF!) + <strong>$25 AI credits</strong> for 3 months.</li>
+  </ul>
+  <p><a href="#" class="cta-button">Request Resume Engine Info NOW</a></p>
+  <p><a href="#" class="cta-button">📅 Join Resume Optimization Webinar</a></p>
+
+  <h2>🎓 RULE THE INDUSTRY with AI & Security Mastery Bootcamp</h2>
+  <p>Our <strong>3-month bootcamp</strong> turns your team into AI and cybersecurity recruiting GURUS. Get coaching, exclusive booklets, and a prestigious certification.</p>
+  <ul>
+    <li><strong>Exclusive:</strong> Only <strong>25 spots</strong> available.</li>
+    <li><strong>Save big:</strong> $297 (35% OFF!).</li>
+    <li><strong>Free passes:</strong> Email us why you deserve one!</li>
+  </ul>
+  <p>Perfect for agencies ready to DOMINATE recruiting.</p>
+  <p><a href="#" class="cta-button">Get Bootcamp Details TODAY</a></p>
+  <p><a href="#" class="cta-button">📅 Attend Revenue $ Partner Webinar</a></p>
+
+  <h2>🔒 SKYROCKET SALES with Delinea’s Cybersecurity Partnership</h2>
+  <p>Partner with <strong>Delinea</strong>, a global leader in Privileged Access Management (PAM) and identity security. Their world-class tools protect organizations from cyber threats by securing privileged accounts and sensitive data.</p>
+  <ul>
+    <li><strong>Why Delinea?</strong> Industry-leading PAM solutions trusted by Fortune 500 companies.</li>
+    <li><strong>Identity Security:</strong> Prevent breaches with advanced access controls and real-time threat detection.</li>
+    <li><strong>Partner Perks:</strong> Lucrative commissions, zero overhead, and top-tier support to scale your revenue FAST.</li>
+  </ul>
+  <p>Don’t just sell—<strong>DOMINATE</strong> the cybersecurity market!</p>
+  <p><a href="#" class="cta-button">Join Delinea Partner Program NOW</a></p>
+  <p><a href="#" class="cta-button">📅 Attend Revenue $ Partner Webinar</a></p>
+
+  <h2>💼 SUPERCHARGE Your Brand with Our Services</h2>
+  <p>Elevate your agency with our high-octane creative solutions:</p>
+  <ul>
+    <li>AI Integration for smarter workflows.</li>
+    <li>Eye-catching Infographics & Posters.</li>
+    <li>Engaging Short Videos & Animated GIFs.</li>
+    <li>Professional PDFs & AI-Powered Website Upgrades.</li>
+  </ul>
+  <p><a href="#" class="cta-button">Explore Services NOW</a></p>
+
+  <h2>🚀 JOIN THE ELITE—LEVEL UP TODAY!</h2>
+  <p>Unlock exclusive tools, insights, and a powerhouse community in our private group.</p>
+  <p><a href="#" class="cta-button">Join Our Private Group NOW</a></p>
+
+  <div class="footer">
+    <p><strong>IncGPT, LLC</strong><br>
+    123 AI Innovation Way, Suite 456<br>
+    San Francisco, CA 94104, USA</p>
+    <p>© 2025 IncGPT. All rights reserved.</p>
+    <p><a href="#">Unsubscribe from these emails</a></p>
+  </div>
+</body>
+</html>
